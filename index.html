@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruang Baca Fisika | FMIPA Unila</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#102f53;--navy2:#173d68;--blue:#287fd0;--blue2:#eaf3ff;--ink:#1c2c40;--muted:#8292a8;--line:#e5ebf2;--bg:#f4f7fb;--white:#fff;--green:#159b70;--red:#e45454;--amber:#d99425;--shadow:0 8px 28px rgba(24,54,89,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:14px}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#0e2d50,#1e568d)}.login-card{width:min(420px,100%);background:#fff;border-radius:22px;padding:36px;box-shadow:0 25px 80px #071d3566}.brand-mark{width:54px;height:54px;border-radius:16px;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:20px;font-weight:800}.login-card h1{font:800 23px 'Plus Jakarta Sans';margin:20px 0 6px}.login-card p{color:var(--muted);margin:0 0 24px}.field{display:flex;flex-direction:column;gap:7px;margin-bottom:15px}.field label{font-size:12px;font-weight:700;color:#52657c}.field input,.field select,.field textarea,.toolbar input,.toolbar select{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 12px;outline:none;background:#fff;color:var(--ink)}.field input:focus,.field select:focus,.field textarea:focus,.toolbar input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #287fd018}.btn{border:0;border-radius:9px;padding:10px 15px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn-primary{background:var(--blue);color:#fff}.btn-primary:hover{background:#176bb9}.btn-light{background:#eef4fb;color:#35516e}.btn-danger{background:#fff0f0;color:var(--red)}.btn-outline{background:#fff;border:1px solid var(--line);color:#52657c}.btn-block{width:100%;padding:13px}.hint{font-size:12px;color:var(--muted);line-height:1.6;margin-top:15px}
+.app{display:flex;min-height:100vh}.sidebar{width:286px;background:var(--navy);color:#dce9f7;position:fixed;inset:0 auto 0 0;display:flex;flex-direction:column;z-index:20;transition:.25s}.brand{height:98px;padding:22px 25px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #ffffff15}.brand .brand-mark{flex:none}.brand strong{font:800 17px 'Plus Jakarta Sans';display:block;color:#fff;letter-spacing:.2px}.brand small{font-size:10px;color:#c1d8f2;display:block;margin-top:5px;letter-spacing:.5px}.profile{margin:21px 19px 18px;padding:15px;background:#ffffff12;border-radius:14px;display:flex;align-items:center;gap:12px}.avatar{width:42px;height:42px;border-radius:50%;background:#2c83d2;color:white;display:grid;place-items:center;font-size:18px;font-weight:800;flex:none}.profile b{display:block;color:#fff;font-size:13px}.profile small{color:#b8d1ec;font-size:11px;display:block;margin-top:5px}.nav{overflow:auto;padding:0 12px 18px;flex:1}.nav-label{font-size:10px;font-weight:800;letter-spacing:1px;color:#8fb4dc;padding:17px 16px 10px}.nav button{width:100%;border:0;background:transparent;color:#dce9f7;padding:13px 16px;border-radius:9px;text-align:left;display:flex;align-items:center;gap:13px;margin:2px 0;font-size:13px}.nav button:hover{background:#ffffff12}.nav button.active{background:var(--blue);color:#fff;box-shadow:0 5px 15px #071d3530}.nav .ico{width:17px;text-align:center;font-size:15px}.side-foot{padding:17px 21px;border-top:1px solid #ffffff18;color:#aec5df;font-size:11px;line-height:1.9}
+.main{margin-left:286px;width:calc(100% - 286px);min-width:0}.topbar{height:98px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 34px;position:sticky;top:0;z-index:10}.top-title h2{font:800 19px 'Plus Jakarta Sans';margin:0 0 5px}.top-title span{font-size:12px;color:var(--muted)}.top-right{display:flex;align-items:center;gap:17px}.admin-meta{text-align:right}.admin-meta b{display:block;font-size:13px}.admin-meta small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.mobile-menu{display:none;background:#eef4fb;border:0;border-radius:8px;padding:9px}
+.content{padding:34px 36px 50px;max-width:1700px;margin:auto}.eyebrow{font-size:11px;color:var(--blue);font-weight:800;letter-spacing:1px}.welcome h1{font:800 27px 'Plus Jakarta Sans';margin:12px 0 8px}.welcome p{color:var(--muted);margin:0 0 26px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:27px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:23px;min-height:145px;box-shadow:var(--shadow)}.stat-top{display:flex;align-items:center;justify-content:space-between;color:#8292a8}.stat-icon{width:41px;height:41px;border-radius:12px;background:var(--blue2);color:var(--blue);display:grid;place-items:center;font-size:18px}.stat strong{font:800 29px 'Plus Jakarta Sans';display:block;margin:12px 0 4px;color:#26384e}.stat small{font-size:11px;color:#91a0b4}.panel{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:22px;overflow:hidden}.panel-head{padding:20px 23px;border-bottom:1px solid #edf1f5;display:flex;align-items:center;justify-content:space-between;gap:12px}.panel-head h3{font:700 16px 'Plus Jakarta Sans';margin:0}.panel-head p{font-size:11px;color:var(--muted);margin:5px 0 0}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:650px}th{background:#f8fafc;color:#7e90a7;font-size:10px;text-transform:uppercase;letter-spacing:.4px;text-align:left;padding:15px 22px}td{padding:14px 22px;border-top:1px solid #edf1f5;color:#43566d;font-size:12px}tbody tr:hover{background:#fbfdff}.empty{text-align:center;color:#9aa8b8;padding:35px}.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:18px 22px}.toolbar input{max-width:300px}.toolbar select{width:auto;min-width:145px}.page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin-bottom:22px}.page-heading h1{font:800 24px 'Plus Jakarta Sans';margin:0 0 6px}.page-heading p{margin:0;color:var(--muted);font-size:12px}.pill{display:inline-flex;padding:5px 9px;border-radius:30px;font-size:10px;font-weight:800;background:#edf3fa;color:#55708e}.pill.green{background:#e7f8f1;color:#13835f}.pill.red{background:#fff0f0;color:#d84d4d}.pill.amber{background:#fff6e7;color:#b87a19}.actions{display:flex;gap:6px}.icon-btn{border:0;background:#eef4fb;color:#55708e;border-radius:7px;padding:7px 9px}.icon-btn.del{background:#fff0f0;color:#d84d4d}
+.modal-backdrop{position:fixed;inset:0;background:#0c203b80;z-index:60;display:grid;place-items:center;padding:20px}.modal{width:min(620px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 25px 80px #071d3555}.modal-head{padding:20px 23px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.modal-head h3{margin:0;font:800 16px 'Plus Jakarta Sans'}.modal-body{padding:22px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}.modal-foot{padding:16px 22px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:9px}.toast{position:fixed;right:24px;bottom:24px;background:#173d68;color:#fff;padding:13px 18px;border-radius:10px;box-shadow:var(--shadow);z-index:100;max-width:360px}.toast.error{background:#b83f3f}.section-note{background:#edf5ff;border:1px solid #d8e9fb;color:#45627f;border-radius:10px;padding:13px 15px;font-size:12px;line-height:1.6;margin:0 22px 18px}.report-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.report-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}.report-card h3{margin:0 0 8px;font:700 15px 'Plus Jakarta Sans'}.report-card p{color:var(--muted);font-size:12px;line-height:1.6}.qr-area{text-align:center;padding:25px}.qr-area canvas,.qr-area img{margin:15px auto;display:block}.muted{color:var(--muted)}.footer-note{font-size:11px;color:#9aa8b8;text-align:center;padding:15px}
+@media(max-width:1100px){.sidebar{width:250px}.main{margin-left:250px;width:calc(100% - 250px)}.stats{grid-template-columns:repeat(2,1fr)}.content{padding:28px 24px}}
+@media(max-width:720px){.sidebar{transform:translateX(-100%);width:286px}.sidebar.open{transform:translateX(0);box-shadow:15px 0 40px #071d3540}.main{margin-left:0;width:100%}.topbar{height:76px;padding:0 16px;gap:12px}.mobile-menu{display:block}.top-title h2{font-size:16px}.top-title span{display:none}.admin-meta{display:none}.content{padding:24px 15px}.welcome h1{font-size:22px}.stats{grid-template-columns:1fr 1fr;gap:10px}.stat{padding:16px;min-height:130px}.stat strong{font-size:24px}.page-heading{align-items:flex-start;flex-direction:column}.report-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.brand{height:85px}.side-foot{padding:13px 20px}}
+
+/* Header navigasi horizontal dan dashboard sesuai referensi */
+.app{display:block;min-height:100vh}
+.sidebar{display:none}
+.main{margin:0;width:100%;min-width:0}
+.topbar{height:120px;background:var(--navy);border:0;color:#dce9f7;padding:0 32px;display:flex;align-items:center;gap:34px;position:sticky;top:0;z-index:30}
+.brand{height:auto;padding:0;border:0;display:flex;align-items:center;gap:15px;flex:none;text-decoration:none;color:inherit}
+.brand .brand-mark{width:76px;height:76px;border-radius:21px;font-size:25px}
+.brand strong{font:800 19px 'Plus Jakarta Sans';color:#fff;white-space:nowrap}
+.brand small{font-size:11px;color:#c1d8f2;letter-spacing:.5px;margin-top:6px;white-space:nowrap}
+.nav{display:flex;align-items:center;gap:7px;overflow:visible;padding:0;flex:1;min-width:0}
+.nav button{width:auto;margin:0;padding:13px 14px;border-radius:10px;color:#d3dfed;font-size:14px;white-space:nowrap;gap:9px}
+.nav button:hover,.nav button.active{background:#ffffff18;color:#fff;box-shadow:none}
+.nav .nav-symbol{font-size:16px;opacity:.9}
+.nav-group{position:relative}
+.nav-group>.nav-trigger{display:flex;align-items:center;background:transparent}
+.chevron{font-size:17px;margin-left:1px;color:#b8c9dc}
+.nav-menu{display:none;position:absolute;top:calc(100% + 9px);left:0;min-width:235px;padding:8px;background:#fff;border:1px solid #e7edf4;border-radius:12px;box-shadow:0 12px 28px #071d3526;z-index:50}
+.nav-group.open .nav-menu,.nav-group:hover .nav-menu{display:block}
+.nav-menu button{display:flex;width:100%;padding:12px 12px;color:#243449;border-radius:8px;text-align:left;font-size:14px}
+.nav-menu button:hover,.nav-menu button.active{background:#f3f7fb;color:#172b42;box-shadow:none}
+.nav-menu button span{width:17px;text-align:center;font-size:16px}
+.nav-menu-right{left:auto;right:0}
+.top-account{display:flex;align-items:center;gap:13px;flex:none}
+.top-account .avatar{width:58px;height:58px;font-size:23px}
+.top-account .admin-meta{text-align:left}
+.top-account .admin-meta b{color:#fff;font-size:14px}
+.top-account .admin-meta small{color:#b8c9dc;font-size:12px}
+#logoutBtn{border-color:#bd6170;color:#e17883;background:transparent;margin-left:7px;padding:11px 14px}
+#logoutBtn:hover{background:#ffffff12}
+.mobile-menu{display:none}
+.content{padding:39px 42px 55px;max-width:1800px}
+.eyebrow{font-size:12px;color:#4c80ad}
+.welcome h1{font-size:31px;margin:15px 0 7px}
+.welcome p{font-size:16px;margin-bottom:30px}
+.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-bottom:28px}
+.stat{border-radius:17px;padding:26px 27px;min-height:178px;box-shadow:0 8px 24px rgba(24,54,89,.045)}
+.stat-top{font-size:16px}
+.stat-icon{width:56px;height:56px;border-radius:16px;font-size:21px}
+.stat strong{font-size:35px;margin:14px 0 5px}
+.stat small{font-size:12px}
+@media(max-width:1350px){
+ .topbar{gap:18px;padding:0 22px}
+ .brand .brand-mark{width:62px;height:62px}
+ .brand strong{font-size:16px}
+ .nav{gap:2px}
+ .nav button{font-size:12px;padding:12px 9px}
+ .top-account{gap:8px}
+ .top-account .avatar{width:48px;height:48px}
+}
+@media(max-width:980px){
+ .topbar{height:auto;min-height:90px;flex-wrap:wrap;padding:15px 20px;gap:14px}
+ .brand{margin-right:auto}
+ .nav{order:3;flex-basis:100%;overflow:visible;flex-wrap:wrap}
+ .top-account .admin-meta{display:none}
+ .content{padding:28px 22px}
+}
+@media(max-width:650px){
+ .topbar{padding:13px 14px}
+ .brand .brand-mark{width:48px;height:48px;border-radius:14px;font-size:17px}
+ .brand strong{font-size:14px}
+ .brand small{font-size:9px}
+ .nav{gap:4px}
+ .nav button{font-size:11px;padding:10px 8px}
+ .nav-group{position:static}
+ .nav-menu{top:100%;left:12px;right:12px;min-width:0}
+ .nav-menu-right{left:12px;right:12px}
+ .top-account .avatar{width:40px;height:40px}
+ #logoutBtn{padding:9px}
+ #logoutBtn span{display:none}
+ .content{padding:24px 14px}
+ .stats{grid-template-columns:1fr 1fr;gap:10px}
+ .stat{padding:16px;min-height:135px}
+ .stat strong{font-size:25px}
+ .stat-top{font-size:12px}
+ .stat-icon{width:38px;height:38px;font-size:16px}
+ .welcome h1{font-size:23px}
+ .welcome p{font-size:13px}
+}
+
+/* Penyegaran header, identitas logo, dan menu akun administrator */
+:root{
+  --navy:#102f53;
+  --navy2:#173f6b;
+  --blue:#2d83d5;
+  --bg:#f3f6fb;
+  --line:#e6edf5;
+  --shadow:0 12px 32px rgba(20,48,82,.055);
+}
+body{background:var(--bg);font-family:'DM Sans',sans-serif}
+.topbar{
+  min-height:104px;height:auto;padding:17px 30px;gap:25px;
+  background:linear-gradient(105deg,#102f53 0%,#153b65 100%);
+  box-shadow:0 5px 22px rgba(8,30,55,.12);
+}
+.brand{gap:14px;min-width:220px}
+.brand .brand-mark{
+  width:64px;height:64px;border-radius:18px;flex:none;
+  background:linear-gradient(145deg,#328ddd,#2375c4);
+  box-shadow:0 7px 18px rgba(0,0,0,.12);
+  overflow:hidden;position:relative;cursor:pointer;
+  outline-offset:4px;transition:transform .18s ease,box-shadow .18s ease;
+}
+.brand .brand-mark:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(0,0,0,.18)}
+.logo-fallback{display:grid;place-items:center;width:100%;height:100%;color:#fff;font:800 23px 'Plus Jakarta Sans'}
+.brand-logo-image{width:100%;height:100%;object-fit:contain;padding:7px;background:#fff}
+.brand strong{font-size:18px;letter-spacing:.35px}
+.brand small{font-size:10px;letter-spacing:.8px;color:#c7d9ec}
+.nav{justify-content:center;gap:5px;flex:1}
+.nav button{font-size:13px;padding:12px 11px;border-radius:10px;transition:background .18s ease,color .18s ease}
+.nav button.active,.nav button:hover{background:rgba(255,255,255,.13)}
+.nav-group>.nav-trigger{gap:8px}
+.chevron{font-size:15px;opacity:.8}
+.nav-menu{top:calc(100% + 13px);border-radius:13px;padding:7px;box-shadow:0 18px 38px rgba(12,35,61,.2)}
+.nav-menu button{font-size:13px;padding:11px 12px}
+.top-account{position:relative;margin-left:auto;flex:none;z-index:55}
+.account-trigger{
+  display:flex;align-items:center;gap:11px;padding:5px 7px 5px 5px;
+  border:1px solid transparent;border-radius:13px;background:transparent;
+  color:#fff;text-align:left;transition:background .18s ease,border-color .18s ease;
+}
+.account-trigger:hover,.top-account.menu-open .account-trigger{
+  background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.13)
+}
+.top-account .avatar{width:48px;height:48px;font-size:19px;background:#2d83d5}
+.top-account .admin-meta{text-align:left;min-width:0}
+.top-account .admin-meta b{font-size:13px;color:#fff;white-space:nowrap}
+.top-account .admin-meta small{font-size:11px;color:#c0d2e5;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.account-chevron{font-size:17px;color:#c7d9ec;margin-left:2px;transition:transform .18s ease}
+.top-account.menu-open .account-chevron{transform:rotate(180deg)}
+.account-menu{
+  display:none;position:absolute;right:0;top:calc(100% + 12px);width:245px;
+  padding:9px;background:#fff;border:1px solid #e8eef5;border-radius:14px;
+  box-shadow:0 18px 42px rgba(7,28,51,.22);color:var(--ink);
+}
+.top-account.menu-open .account-menu{display:block;animation:accountDrop .16s ease-out}
+@keyframes accountDrop{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+.account-menu-heading{padding:10px 11px 13px;border-bottom:1px solid #edf1f6;margin-bottom:7px}
+.account-menu-heading strong{display:block;font-size:13px;color:#1d3048}
+.account-menu-heading small{display:block;color:#8191a6;font-size:11px;margin-top:5px;overflow-wrap:anywhere}
+#logoutBtn.account-logout{
+  display:flex;align-items:center;gap:10px;width:100%;padding:11px 12px;
+  border:0;border-radius:9px;background:#fff3f3;color:#c84d58;
+  font-size:13px;font-weight:700;text-align:left;margin:0;
+}
+#logoutBtn.account-logout:hover{background:#ffe7e8}
+.content{max-width:1760px;padding:36px 44px 58px}
+.welcome h1{font-size:29px;letter-spacing:-.7px}
+.welcome p{color:#8192a8}
+.stats{gap:20px}
+.stat{border:1px solid #e7edf5;border-radius:18px;box-shadow:0 10px 28px rgba(22,50,82,.045);transition:transform .18s ease,box-shadow .18s ease}
+.stat:hover{transform:translateY(-2px);box-shadow:0 15px 32px rgba(22,50,82,.075)}
+.stat-top{color:#788ba4}
+.stat-icon{background:#edf5ff;color:#267dca}
+.panel{border-radius:17px;box-shadow:0 10px 28px rgba(22,50,82,.045)}
+@media(max-width:1450px){
+  .topbar{gap:15px;padding-left:22px;padding-right:22px}
+  .brand{min-width:195px}
+  .brand .brand-mark{width:58px;height:58px}
+  .brand strong{font-size:16px}
+  .nav{gap:1px}
+  .nav button{font-size:12px;padding:11px 8px}
+  .top-account .admin-meta small{max-width:145px}
+}
+@media(max-width:1120px){
+  .topbar{flex-wrap:wrap;gap:12px 18px;padding:14px 20px}
+  .brand{order:1}
+  .top-account{order:2}
+  .nav{order:3;flex-basis:100%;justify-content:flex-start;flex-wrap:wrap}
+  .top-account .admin-meta{display:block}
+  .content{padding:30px 25px 48px}
+}
+@media(max-width:650px){
+  .topbar{padding:12px 14px;gap:10px}
+  .brand{min-width:0;gap:10px}
+  .brand .brand-mark{width:46px;height:46px;border-radius:13px}
+  .brand strong{font-size:13px}
+  .brand small{font-size:8px}
+  .top-account .avatar{width:38px;height:38px;font-size:16px}
+  .top-account .admin-meta{display:none}
+  .account-trigger{gap:4px;padding:3px}
+  .account-menu{right:0;width:220px}
+  .nav{gap:3px}
+  .nav button{font-size:11px;padding:9px 8px}
+  .nav-menu{top:calc(100% + 7px)}
+  .content{padding:23px 14px 40px}
+  .welcome h1{font-size:22px}
+  .stats{grid-template-columns:1fr 1fr;gap:10px}
+  .stat{padding:15px;min-height:132px}
+}
+
+
+/* Dashboard mengikuti referensi kartu warna 4 kolom */
+.dashboard-reference-head{
+ display:flex;align-items:center;justify-content:space-between;gap:16px;
+ margin:0 0 27px;padding:0 2px;
+}
+.dashboard-page-title{display:flex;align-items:baseline;gap:9px;color:#667487;font-size:14px}
+.dashboard-page-title strong{color:#24364b;font-size:14px;font-weight:700}
+.dashboard-breadcrumb{display:flex;align-items:center;gap:18px;color:#738094;font-size:13px}
+.dashboard-breadcrumb span:first-child{color:#26394f;font-weight:700}
+.dashboard-reference-grid{
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;
+ margin-bottom:28px;
+}
+.dashboard-color-tile{
+ position:relative;display:flex;align-items:center;justify-content:space-between;
+ gap:12px;width:100%;min-width:0;min-height:116px;padding:17px 19px;
+ border:0;border-radius:2px;color:#fff;text-align:left;overflow:hidden;
+ box-shadow:0 4px 12px rgba(24,45,68,.08);
+ transition:transform .16s ease,filter .16s ease,box-shadow .16s ease;
+ cursor:pointer;
+}
+.dashboard-color-tile:hover{transform:translateY(-3px);filter:brightness(1.035);box-shadow:0 9px 18px rgba(24,45,68,.14)}
+.dashboard-color-tile:focus-visible{outline:3px solid #173f6b;outline-offset:3px}
+.dashboard-color-tile .tile-copy{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0}
+.dashboard-color-tile .tile-copy strong{font-size:23px;line-height:1.15;font-weight:700}
+.dashboard-color-tile .tile-copy>span{font-size:19px;line-height:1.25;font-weight:500;overflow-wrap:anywhere}
+.dashboard-color-tile .tile-copy small{margin-top:4px;font-size:11px;line-height:1.35;color:rgba(255,255,255,.83)}
+.dashboard-color-tile .tile-icon{flex:none;font-size:27px;line-height:1;color:rgba(255,255,255,.76);font-weight:700}
+.dashboard-color-tile.tone-cyan{background:#08b6d7}
+.dashboard-color-tile.tone-green{background:#08a45d}
+.dashboard-color-tile.tone-red{background:#df493b}
+.dashboard-color-tile.tone-orange{background:#f39b12}
+.dashboard-color-tile.shortcut-tile{min-height:83px}
+.dashboard-color-tile.shortcut-tile .tile-copy>span{font-size:18px}
+.dashboard-color-tile.shortcut-tile .tile-copy small{font-size:10px}
+.dashboard-recent-panel{margin-top:26px}
+.dashboard-reference-grid+.panel{margin-top:0}
+@media(max-width:1050px){
+ .dashboard-reference-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+}
+@media(max-width:620px){
+ .dashboard-reference-head{align-items:flex-start;flex-direction:column;margin-bottom:18px}
+ .dashboard-breadcrumb{gap:12px}
+ .dashboard-reference-grid{grid-template-columns:1fr 1fr;gap:10px}
+ .dashboard-color-tile{min-height:105px;padding:13px 12px}
+ .dashboard-color-tile .tile-copy strong{font-size:20px}
+ .dashboard-color-tile .tile-copy>span{font-size:15px}
+ .dashboard-color-tile .tile-icon{font-size:21px}
+ .dashboard-color-tile.shortcut-tile{min-height:76px}
+ .dashboard-color-tile.shortcut-tile .tile-copy>span{font-size:14px}
+}
+
+</style>
+</head>
+<body>
+<div id="loginView" class="login-wrap">
+  <div class="login-card">
+    <div class="brand-mark logo-slot" data-logo-picker role="button" tabindex="0" title="Klik untuk memasang logo sendiri"><span class="logo-fallback">RB</span><img class="brand-logo-image" alt="Logo Ruang Baca" hidden></div>
+    <h1>Ruang Baca Fisika</h1>
+    <p>Administrator · FMIPA Universitas Lampung</p>
+    <form id="loginForm">
+      <div class="field"><label>Email Administrator</label><input id="loginEmail" type="email" placeholder="admin@email.com" required autocomplete="username"></div>
+      <div class="field"><label>Password</label><input id="loginPassword" type="password" placeholder="Masukkan password" required autocomplete="current-password"></div>
+      <button class="btn btn-primary btn-block" type="submit" id="loginBtn">Masuk ke Dashboard</button>
+      <div id="loginMessage" style="display:none;margin-top:12px;padding:11px 12px;border-radius:9px;background:#fff0f0;color:#b83f3f;font-size:12px;line-height:1.5"></div>
+    </form>
+    <div class="hint">Gunakan akun administrator yang telah dibuat melalui Firebase Authentication. Pendaftaran akun publik tidak tersedia pada halaman ini.</div>
+  </div>
+</div>
+
+<div id="appView" class="app hidden">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Ruang Baca Fisika">
+      <div class="brand-mark logo-slot" data-logo-picker role="button" tabindex="0" title="Klik untuk memasang logo sendiri"><span class="logo-fallback">RB</span><img class="brand-logo-image" alt="Logo Ruang Baca" hidden></div>
+      <div><strong>RUANG BACA</strong><small>FISIKA FMIPA UNILA</small></div>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigasi utama">
+      <button class="active" data-page="dashboard"><span class="nav-symbol">▦</span>Dashboard</button>
+      <div class="nav-group">
+        <button class="nav-trigger" type="button"><span class="nav-symbol">▤</span>Manajemen Koleksi <span class="chevron">⌄</span></button>
+        <div class="nav-menu">
+          <button data-page="books"><span>▤</span>Data Buku</button>
+          <button data-page="addbook"><span>＋</span>Tambah Buku</button>
+          <button data-page="categories"><span>◇</span>Kategori</button>
+          <button data-page="authors"><span>✎</span>Penulis</button>
+          <button data-page="publishers"><span>▣</span>Penerbit</button>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="nav-trigger" type="button"><span class="nav-symbol">▥</span>Inventaris Buku <span class="chevron">⌄</span></button>
+        <div class="nav-menu">
+          <button data-page="copies"><span>▥</span>Data Eksemplar</button>
+          <button data-page="barcode"><span>▦</span>Barcode / QR Code</button>
+          <button data-page="conditions"><span>⌁</span>Kondisi Buku</button>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="nav-trigger" type="button"><span class="nav-symbol">⇄</span>Sirkulasi Perpustakaan <span class="chevron">⌄</span></button>
+        <div class="nav-menu">
+          <button data-page="members"><span>♙</span>Data Anggota</button>
+          <button data-page="loans"><span>⇄</span>Peminjaman</button>
+          <button data-page="returns"><span>↩</span>Pengembalian</button>
+          <button data-page="fines"><span>₨</span>Denda</button>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="nav-trigger" type="button"><span class="nav-symbol">♙</span>Administrasi <span class="chevron">⌄</span></button>
+        <div class="nav-menu nav-menu-right">
+          <button data-page="reports"><span>▥</span>Laporan</button>
+          <button data-page="settings"><span>⚙</span>Pengaturan</button>
+        </div>
+      </div>
+    </nav>
+    <div class="top-account" id="topAccount">
+      <button class="account-trigger" id="accountMenuTrigger" type="button" aria-haspopup="true" aria-expanded="false">
+        <span class="avatar">A</span>
+        <span class="admin-meta"><b>Administrator</b><small id="adminEmail">-</small></span>
+        <span class="account-chevron" aria-hidden="true">⌄</span>
+      </button>
+      <div class="account-menu" id="accountMenu">
+        <div class="account-menu-heading">
+          <strong>Administrator</strong>
+          <small id="accountMenuEmail">-</small>
+        </div>
+        <button class="account-logout" id="logoutBtn" type="button"><span aria-hidden="true">⇥</span> Keluar dari akun</button>
+      </div>
+    </div>
+    <div class="legacy-title hidden"><span id="topTitle">Dashboard</span><span id="topSubtitle">Ringkasan aktivitas perpustakaan</span></div>
+  </header>
+  <main class="main">
+    <section class="content" id="pageContent"></section>
+  </main>
+</div>
+<input id="brandLogoInput" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden aria-label="Pilih logo Ruang Baca">\n<div id="modalRoot"></div><div id="toastRoot"></div>
+
+
+<script>
+/* Diagnostik mandiri: memberi pesan jika Firebase module gagal dimuat. */
+window.__firebaseLoginReady = false;
+document.addEventListener("submit", function (event) {
+  if (event.target && event.target.id === "loginForm" && !window.__firebaseLoginReady) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const message = document.getElementById("loginMessage");
+    if (message) {
+      message.textContent = "Sistem login belum siap. JavaScript Firebase tidak berhasil dimuat. Periksa koneksi internet, lalu jalankan website melalui Live Server (http://localhost), bukan dengan membuka file HTML langsung. Jika masih gagal, buka F12 > Console dan kirimkan pesan error berwarna merah.";
+      message.style.display = "block";
+    }
+  }
+}, true);
+window.addEventListener("error", function (event) {
+  const message = document.getElementById("loginMessage");
+  if (message && !window.__firebaseLoginReady) {
+    message.textContent = "Terjadi kesalahan saat memuat aplikasi: " + (event.message || "JavaScript gagal dijalankan") + ". Buka F12 > Console untuk melihat detail.";
+    message.style.display = "block";
+  }
+});
+window.addEventListener("unhandledrejection", function (event) {
+  const message = document.getElementById("loginMessage");
+  if (message && !window.__firebaseLoginReady) {
+    const reason = event.reason && event.reason.message ? event.reason.message : String(event.reason || "Kesalahan tidak diketahui");
+    message.textContent = "Koneksi atau pemuatan Firebase bermasalah: " + reason + ". Periksa koneksi internet dan Console browser.";
+    message.style.display = "block";
+  }
+});
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+import { getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, doc, serverTimestamp, query, orderBy, limit, writeBatch } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+/* ===================== KONFIGURASI FIREBASE =====================
+   Ganti nilai di bawah dengan konfigurasi Web App dari Firebase Console.
+   ADMIN_EMAILS harus berisi email administrator yang diizinkan masuk.
+   Keamanan sebenarnya wajib ditegakkan lagi melalui Firestore Security Rules.
+================================================================== */
+const firebaseConfig = {
+  apiKey: "AIzaSyCGzzG22uFiIUwBF2fwaeshnxXChmwt-Tk",
+  authDomain: "ruang-baca-fisika-unila.firebaseapp.com",
+  projectId: "ruang-baca-fisika-unila",
+  storageBucket: "ruang-baca-fisika-unila.firebasestorage.app",
+  messagingSenderId: "46526897444",
+  appId: "1:46526897444:web:64f863f695943eb980e7b1"
+};
+const ADMIN_EMAILS = ["Adminruangbaca@gmail.com"]; // ganti dengan email admin
+const FINE_PER_DAY = 2000;
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const $ = s => document.querySelector(s);
+
+// Logo perpustakaan dapat diganti sendiri dengan memilih gambar dari perangkat.
+const BRAND_LOGO_KEY = "ruangBacaFisikaBrandLogo";
+function applyBrandLogo(dataUrl){
+  document.querySelectorAll(".logo-slot").forEach(slot=>{
+    const image=slot.querySelector(".brand-logo-image");
+    const fallback=slot.querySelector(".logo-fallback");
+    if(!image||!fallback)return;
+    if(dataUrl){image.src=dataUrl;image.hidden=false;fallback.hidden=true;}
+    else{image.removeAttribute("src");image.hidden=true;fallback.hidden=false;}
+  });
+}
+try{applyBrandLogo(localStorage.getItem(BRAND_LOGO_KEY));}catch(e){console.warn("Logo tersimpan tidak dapat dibaca:",e)}
+document.querySelectorAll("[data-logo-picker]").forEach(slot=>{
+  const openPicker=event=>{event?.preventDefault();event?.stopPropagation();$("#brandLogoInput")?.click();};
+  slot.addEventListener("click",openPicker);
+  slot.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openPicker();}});
+});
+$("#brandLogoInput")?.addEventListener("change",event=>{
+  const file=event.target.files?.[0];if(!file)return;
+  if(!file.type.startsWith("image/")){toast("Pilih file gambar untuk logo.",true);event.target.value="";return;}
+  if(file.size>1500000){toast("Ukuran logo maksimal 1,5 MB. Silakan perkecil gambar terlebih dahulu.",true);event.target.value="";return;}
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{localStorage.setItem(BRAND_LOGO_KEY,reader.result);applyBrandLogo(reader.result);toast("Logo Ruang Baca berhasil diperbarui.");}
+    catch(err){toast("Logo tidak dapat disimpan. Gunakan gambar yang lebih kecil.",true);}
+  };
+  reader.readAsDataURL(file);
+  event.target.value="";
+});
+
+// Menu akun: tombol Keluar hanya tampil setelah area Administrator diklik.
+const accountBox=$("#topAccount"),accountTrigger=$("#accountMenuTrigger");
+accountTrigger?.addEventListener("click",()=>{
+  const opened=accountBox.classList.toggle("menu-open");
+  accountTrigger.setAttribute("aria-expanded",String(opened));
+});
+document.addEventListener("click",event=>{
+  if(accountBox&&!accountBox.contains(event.target)){
+    accountBox.classList.remove("menu-open");
+    accountTrigger?.setAttribute("aria-expanded","false");
+  }
+});
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"&&accountBox){
+    accountBox.classList.remove("menu-open");
+    accountTrigger?.setAttribute("aria-expanded","false");
+  }
+});
+
+const esc = v => String(v ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const rupiah = n => new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(Number(n||0));
+const dateText = v => { if(!v)return "-"; const d=v?.toDate?v.toDate():new Date(v); return isNaN(d)? "-":d.toLocaleDateString("id-ID",{day:"2-digit",month:"short",year:"numeric"}); };
+const toDateInput = v => {if(!v)return "";const d=v?.toDate?v.toDate():new Date(v);return isNaN(d)?"":d.toISOString().slice(0,10)};
+const collections = {
+ books:{title:"Data Buku",sub:"Kelola koleksi judul buku",fields:[
+  ["bookCode","Kode Buku","text",true],["title","Judul Buku","text",true],["isbn","ISBN","text"],["category","Kategori","text"],["author","Penulis","text"],["publisher","Penerbit","text"],["publicationYear","Tahun Terbit","number"],["shelf","Lokasi Rak","text"],["description","Deskripsi","textarea"]]},
+ categories:{title:"Kategori",sub:"Kelola kategori koleksi",fields:[["name","Nama Kategori","text",true],["description","Keterangan","textarea"]]},
+ authors:{title:"Penulis",sub:"Kelola data penulis buku",fields:[["name","Nama Penulis","text",true],["bio","Biografi Singkat","textarea"]]},
+ publishers:{title:"Penerbit",sub:"Kelola data penerbit",fields:[["name","Nama Penerbit","text",true],["city","Kota","text"],["address","Alamat","textarea"]]},
+ copies:{title:"Data Eksemplar",sub:"Kelola setiap unit fisik buku",fields:[["inventoryCode","Kode Inventaris","text",true],["bookTitle","Judul Buku","text",true],["bookId","ID Dokumen Buku","text"],["condition","Kondisi","select",true,["Baik","Rusak Ringan","Rusak Berat","Hilang"]],["status","Status","select",true,["tersedia","dipinjam","perbaikan","hilang"]],["location","Lokasi Rak","text"]]},
+ members:{title:"Data Anggota",sub:"Kelola data anggota perpustakaan",fields:[["memberCode","NPM / ID Anggota","text",true],["name","Nama Anggota","text",true],["email","Email","email"],["phone","Nomor HP","text"],["program","Program Studi","text"],["status","Status Anggota","select",true,["aktif","nonaktif"]]]},
+ loans:{title:"Peminjaman",sub:"Catat dan pantau transaksi peminjaman",fields:[["loanCode","Kode Peminjaman","text",true],["memberName","Nama Peminjam","text",true],["memberCode","NPM / ID Anggota","text"],["bookTitle","Judul Buku","text",true],["inventoryCode","Kode Eksemplar","text"],["loanDate","Tanggal Pinjam","date",true],["dueDate","Batas Pengembalian","date",true],["status","Status","select",true,["dipinjam","dikembalikan","terlambat"]]]},
+ returns:{title:"Pengembalian",sub:"Catat pengembalian buku",fields:[["returnCode","Kode Pengembalian","text",true],["loanCode","Kode Peminjaman","text",true],["memberName","Nama Peminjam","text"],["bookTitle","Judul Buku","text"],["returnDate","Tanggal Kembali","date",true],["condition","Kondisi Buku","select",true,["Baik","Rusak Ringan","Rusak Berat","Hilang"]],["fineAmount","Denda (Rp)","number"]]},
+ fines:{title:"Denda",sub:"Pantau dan kelola pembayaran denda",fields:[["fineCode","Kode Denda","text",true],["loanCode","Kode Peminjaman","text"],["memberName","Nama Anggota","text",true],["amount","Jumlah Denda (Rp)","number",true],["status","Status Pembayaran","select",true,["belum_lunas","lunas"]],["paidDate","Tanggal Pembayaran","date"]]}
+};
+const pageMeta={
+ dashboard:["Dashboard","Ringkasan aktivitas perpustakaan"],books:["Data Buku","Kelola koleksi buku"],addbook:["Tambah Buku","Tambahkan judul buku baru"],categories:["Kategori","Kelola kategori koleksi"],authors:["Penulis","Kelola data penulis"],publishers:["Penerbit","Kelola data penerbit"],copies:["Data Eksemplar","Kelola inventaris fisik"],barcode:["Barcode / QR Code","Buat kode identifikasi eksemplar"],conditions:["Kondisi Buku","Pantau kondisi inventaris"],members:["Data Anggota","Kelola anggota perpustakaan"],loans:["Peminjaman","Kelola transaksi peminjaman"],returns:["Pengembalian","Kelola transaksi pengembalian"],fines:["Denda","Kelola denda anggota"],reports:["Laporan","Rekapitulasi data perpustakaan"],settings:["Pengaturan","Konfigurasi sistem perpustakaan"]
+};
+let currentPage="dashboard",cache={},activeUser=null,modalEditing=null;
+
+function toast(msg,error=false){const root=$("#toastRoot");root.innerHTML=`<div class="toast ${error?"error":""}">${esc(msg)}</div>`;setTimeout(()=>root.innerHTML="",3200)}
+function fmtStatus(s){const x=String(s||"-");let cl=["tersedia","aktif","lunas","dikembalikan","Baik"].includes(x)?"green":["terlambat","belum_lunas","nonaktif","Rusak Berat","hilang"].includes(x)?"red":["dipinjam","Rusak Ringan","perbaikan"].includes(x)?"amber":"";return `<span class="pill ${cl}">${esc(x.replaceAll("_"," "))}</span>`}
+async function getRows(name,force=false){if(cache[name]&&!force)return cache[name];const snap=await getDocs(collection(db,name));const rows=snap.docs.map(d=>({id:d.id,...d.data()}));cache[name]=rows;return rows}
+function invalidate(...names){names.forEach(n=>delete cache[n])}
+function navTo(page){currentPage=page;document.querySelectorAll(".nav-group").forEach(g=>g.classList.remove("open"));$("#nav").querySelectorAll("button[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));const m=pageMeta[page]||["Dashboard",""];$("#topTitle").textContent=m[0];$("#topSubtitle").textContent=m[1];renderPage().catch(e=>toast(e.message,true))}
+$("#nav").addEventListener("click",e=>{const b=e.target.closest("button[data-page]");if(b)navTo(b.dataset.page)});
+$("#nav").addEventListener("click",e=>{const trigger=e.target.closest(".nav-trigger");if(trigger){const group=trigger.closest(".nav-group");document.querySelectorAll(".nav-group").forEach(g=>{if(g!==group)g.classList.remove("open")});group.classList.toggle("open");}});
+document.addEventListener("click",e=>{if(!e.target.closest(".nav-group"))document.querySelectorAll(".nav-group").forEach(g=>g.classList.remove("open"));});
+// Navigasi versi navbar horizontal tidak memakai #mobileMenu atau #sidebar.
+
+async function renderPage(){
+ const root=$("#pageContent");
+ if(currentPage==="dashboard"){await renderDashboard(root);return}
+ if(currentPage==="addbook"){currentPage="books";$("#nav").querySelectorAll("button[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page==="books"));$("#topTitle").textContent=pageMeta.books[0];$("#topSubtitle").textContent=pageMeta.books[1];await openBookForm(null);return}
+ if(currentPage==="barcode"){await renderBarcode(root);return}
+ if(currentPage==="loans"){await renderLoanPage(root);return}
+ if(currentPage==="returns"){await renderReturnPage(root);return}
+ if(currentPage==="fines"){await renderFinePage(root);return}
+ if(currentPage==="conditions"){await renderConditions(root);return}
+ if(currentPage==="reports"){await renderReports(root);return}
+ if(currentPage==="settings"){renderSettings(root);return}
+ await renderCollectionPage(root,currentPage);
+}
+async function renderDashboard(root){
+ root.innerHTML=`
+ <div class="dashboard-reference-head">
+   <div class="dashboard-page-title"><strong>Dashboard</strong><span>Control panel</span></div>
+   <div class="dashboard-breadcrumb"><span>⌂ Home</span><span>Dashboard</span></div>
+ </div>
+ <div class="dashboard-reference-grid" id="statsGrid"></div>
+ <div class="panel dashboard-recent-panel">
+   <div class="panel-head"><div><h3>Transaksi Peminjaman Terbaru</h3><p>Delapan transaksi terakhir</p></div><button class="btn btn-light" id="allLoans">Lihat Semua</button></div>
+   <div class="table-wrap"><table><thead><tr><th>Peminjam</th><th>Judul Buku</th><th>Tanggal</th><th>Status</th></tr></thead><tbody id="recentLoans"></tbody></table></div>
+ </div>
+ <div class="panel">
+   <div class="panel-head"><div><h3>Ringkasan Koleksi</h3><p>Kondisi ketersediaan eksemplar</p></div></div>
+   <div class="toolbar" id="collectionSummary"></div>
+ </div>`;
+ const names=["books","copies","members","loans","returns","fines"];
+ const [books,copies,members,loans,returns,fines]=await Promise.all(names.map(n=>getRows(n,true)));
+ const available=copies.filter(x=>x.status==="tersedia").length;
+ const active=loans.filter(x=>x.status==="dipinjam"||x.status==="terlambat").length;
+ const overdue=loans.filter(x=>x.status==="terlambat"||((x.status==="dipinjam")&&x.dueDate&&new Date(x.dueDate)<new Date())).length;
+ const unpaid=fines.filter(x=>x.status!=="lunas").reduce((a,x)=>a+Number(x.amount||0),0);
+ const metrics=[
+  {label:"Total Anggota",value:members.length,icon:"♟",tone:"cyan",note:"Anggota terdaftar"},
+  {label:"Peminjaman Aktif",value:active,icon:"➤",tone:"green",note:"Buku sedang dipinjam"},
+  {label:"Total Buku",value:books.length,icon:"▤",tone:"red",note:"Judul koleksi"},
+  {label:"Denda Belum Lunas",value:rupiah(unpaid),icon:"＄",tone:"orange",note:"Tagihan anggota"}
+ ];
+ const shortcuts=[
+  {label:"Kelola Buku",icon:"▤",tone:"red",page:"books",note:"Data dan koleksi buku"},
+  {label:"Kelola Anggota",icon:"♟",tone:"orange",page:"members",note:"Data anggota perpustakaan"},
+  {label:"Status Buku",icon:"◇",tone:"cyan",page:"conditions",note:"Kondisi dan ketersediaan"},
+  {label:"Data Eksemplar",icon:"▥",tone:"green",page:"copies",note:"Inventaris fisik buku"}
+ ];
+ $("#statsGrid").innerHTML=metrics.map(x=>`
+  <button type="button" class="dashboard-color-tile metric-tile tone-${x.tone}" aria-label="${x.label}">
+   <span class="tile-copy"><strong>${x.value}</strong><span>${x.label}</span><small>${x.note}</small></span>
+   <span class="tile-icon" aria-hidden="true">${x.icon}</span>
+  </button>`).join("")+shortcuts.map(x=>`
+  <button type="button" class="dashboard-color-tile shortcut-tile tone-${x.tone}" data-dashboard-page="${x.page}">
+   <span class="tile-copy"><span>${x.label}</span><small>${x.note}</small></span>
+   <span class="tile-icon" aria-hidden="true">${x.icon}</span>
+  </button>`).join("");
+ $("#statsGrid").querySelectorAll("[data-dashboard-page]").forEach(button=>{
+   button.addEventListener("click",()=>navTo(button.dataset.dashboardPage));
+ });
+ $("#statsGrid").querySelectorAll(".metric-tile").forEach((button,index)=>{
+   const destinations=["members","loans","books","fines"];
+   button.addEventListener("click",()=>navTo(destinations[index]));
+ });
+ const recent=[...loans].sort((a,b)=>new Date(b.loanDate||0)-new Date(a.loanDate||0)).slice(0,8);
+ $("#recentLoans").innerHTML=recent.length?recent.map(x=>`<tr><td>${esc(x.memberName||"-")}</td><td>${esc(x.bookTitle||"-")}</td><td>${dateText(x.loanDate)}</td><td>${fmtStatus(x.status)}</td></tr>`).join(""):`<tr><td colspan="4" class="empty">Belum ada transaksi peminjaman.</td></tr>`;
+ $("#collectionSummary").innerHTML=`<span class="pill green">Tersedia: ${available}</span><span class="pill amber">Dipinjam: ${copies.filter(x=>x.status==="dipinjam").length}</span><span class="pill red">Perlu perhatian: ${copies.filter(x=>["perbaikan","hilang"].includes(x.status)).length}</span>`;
+ $("#allLoans").onclick=()=>navTo("loans");
+}
+async function renderCollectionPage(root,page){
+ const cfg=collections[page];if(!cfg){root.innerHTML='<div class="panel empty">Modul belum tersedia.</div>';return}
+ const rows=await getRows(page,true);
+ const bookCopies=page==="books"?await getRows("copies",true):[];
+ root.innerHTML=`<div class="page-heading"><div><h1>${cfg.title}</h1><p>${cfg.sub}</p></div><button class="btn btn-primary" id="addRecord">＋ Tambah Data</button></div><div class="panel"><div class="toolbar"><input id="searchRows" placeholder="Cari data..."><select id="statusFilter"><option value="">Semua status</option><option value="aktif">Aktif</option><option value="tersedia">Tersedia</option><option value="dipinjam">Dipinjam</option><option value="terlambat">Terlambat</option><option value="lunas">Lunas</option><option value="belum_lunas">Belum lunas</option></select><button class="btn btn-light" id="refreshRows">↻ Muat Ulang</button><button class="btn btn-outline" id="exportRows">Ekspor CSV</button></div><div class="table-wrap"><table><thead><tr>${cfg.fields.map(f=>`<th>${esc(f[1])}</th>`).join("")}${page==="books"?"<th>Total Eksemplar</th><th>Tersedia</th>":""}<th>Aksi</th></tr></thead><tbody id="rowsBody"></tbody></table></div><div class="footer-note" id="rowCount"></div></div>`;
+ const draw=()=>{
+  const q=$("#searchRows").value.toLowerCase(),st=$("#statusFilter").value;
+  const filtered=rows.filter(r=>(!st||r.status===st)&&cfg.fields.some(f=>String(r[f[0]]??"").toLowerCase().includes(q)));
+  $("#rowsBody").innerHTML=filtered.length?filtered.map(r=>`<tr>${cfg.fields.map(f=>`<td>${f[0]==="status"||f[0]==="condition"?fmtStatus(r[f[0]]):esc(f[2]==="date"?dateText(r[f[0]]):r[f[0]]??"-")}</td>`).join("")}${page==="books"?(()=>{const rel=bookCopies.filter(c=>c.bookId===r.id);return `<td>${rel.length}</td><td>${rel.filter(c=>c.status==="tersedia").length}</td>`})():""}<td><div class="actions"><button class="icon-btn" data-edit="${r.id}" title="Edit">✎</button><button class="icon-btn del" data-delete="${r.id}" title="Hapus">⌫</button></div></td></tr>`).join(""):`<tr><td colspan="${cfg.fields.length+(page==="books"?2:0)+1}" class="empty">Data belum tersedia. Klik Tambah Data untuk memulai.</td></tr>`;
+  $("#rowCount").textContent=`Menampilkan ${filtered.length} dari ${rows.length} data`;
+ };
+ draw();$("#searchRows").oninput=draw;$("#statusFilter").onchange=draw;
+ $("#addRecord").onclick=()=>page==="books"?openBookForm(null):page==="copies"?openCopyForm(null):openForm(page,null);
+ $("#refreshRows").onclick=()=>{invalidate(page);renderCollectionPage(root,page)};
+ $("#exportRows").onclick=()=>exportCSV(cfg.title,rows,cfg.fields);
+ $("#rowsBody").onclick=e=>{const edit=e.target.closest("[data-edit]"),del=e.target.closest("[data-delete]");if(edit){const rec=rows.find(x=>x.id===edit.dataset.edit);if(page==="books")openBookForm(rec);else if(page==="copies")openCopyForm(rec);else openForm(page,rec)}if(del)confirmDelete(page,del.dataset.delete)};
+}
+async function nextSequence(collectionName,field,prefix,width){
+ const rows=await getRows(collectionName,true);
+ let max=0;
+ rows.forEach(r=>{const m=String(r[field]||"").match(new RegExp("^"+prefix.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(\\d+)$"));if(m)max=Math.max(max,Number(m[1]));});
+ return prefix+String(max+1).padStart(width,"0");
+}
+async function openBookForm(record){
+ const isEdit=!!record;
+ let suggestedCode=record?.bookCode||await nextSequence("books","bookCode","RB-BK-",6);
+ const inputs=collections.books.fields.map(f=>{
+  const [key,label,kind,required]=f;const value=record?.[key]??"";
+  if(kind==="textarea")return `<div class="field" style="grid-column:1/-1"><label>${label}</label><textarea name="${key}" rows="3">${esc(value)}</textarea></div>`;
+  if(key==="bookCode")return `<div class="field"><label>${label} *</label><input name="${key}" value="${esc(suggestedCode)}" readonly required></div>`;
+  return `<div class="field"><label>${label}${required?" *":""}</label><input name="${key}" type="${kind}" value="${esc(value)}" ${required?"required":""} ${kind==="number"?'min="0"':''}></div>`;
+ }).join("");
+ const copyField=isEdit?"":`<div class="field"><label>Jumlah Eksemplar Awal *</label><input name="initialCopies" type="number" min="1" max="450" value="1" required><small class="muted">Sistem akan membuat kode inventaris INV000001, INV000002, dan seterusnya.</small></div>`;
+ showModal(`${isEdit?"Edit":"Tambah"} Data Buku`,`${inputs}${copyField}`,"Simpan Buku");
+ $("#recordForm").onsubmit=async e=>{
+  e.preventDefault();const fd=new FormData(e.target),data={};
+  collections.books.fields.forEach(f=>{let v=fd.get(f[0]);if(f[2]==="number")v=v===""?0:Number(v);data[f[0]]=v});
+  data.updatedAt=serverTimestamp();
+  const btn=e.target.querySelector('[type="submit"]');btn.disabled=true;btn.textContent="Menyimpan...";
+  try{
+   if(isEdit){
+    const copies=await getRows("copies",true);const related=copies.filter(c=>c.bookId===record.id);
+    if(related.length>450)throw new Error("Jumlah eksemplar terkait melebihi batas pembaruan sekaligus. Hubungi pengelola sistem untuk pembaruan bertahap.");
+    const batch=writeBatch(db);
+    batch.update(doc(db,"books",record.id),data);
+    related.forEach(c=>batch.update(doc(db,"copies",c.id),{bookTitle:data.title,bookCode:data.bookCode,updatedAt:serverTimestamp()}));
+    await batch.commit();
+    invalidate("books","copies");toast("Data buku dan relasi eksemplarnya berhasil diperbarui.");
+   }else{
+    const copiesCount=Number(fd.get("initialCopies"));
+    if(!Number.isInteger(copiesCount)||copiesCount<1||copiesCount>450)throw new Error("Jumlah eksemplar harus antara 1 sampai 450.");
+    const existing=await getRows("books",true);
+    if(existing.some(b=>String(b.bookCode||"").toLowerCase()===String(data.bookCode).toLowerCase()))throw new Error("Kode buku sudah digunakan. Muat ulang lalu coba lagi.");
+    const firstInventory=await nextSequence("copies","inventoryCode","INV",6);
+    const start=Number(firstInventory.slice(3));
+    const batch=writeBatch(db);
+    const bookRef=doc(collection(db,"books"));
+    batch.set(bookRef,{...data,createdAt:serverTimestamp()});
+    for(let i=0;i<copiesCount;i++){
+     const inventoryCode="INV"+String(start+i).padStart(6,"0");
+     const copyRef=doc(collection(db,"copies"));
+     batch.set(copyRef,{inventoryCode,bookId:bookRef.id,bookCode:data.bookCode,bookTitle:data.title,condition:"Baik",status:"tersedia",location:data.shelf||"",createdAt:serverTimestamp(),updatedAt:serverTimestamp()});
+    }
+    await batch.commit();invalidate("books","copies");toast(`${data.title} berhasil ditambahkan dengan ${copiesCount} eksemplar.`);
+   }
+   closeModal();renderPage();
+  }catch(err){toast("Gagal menyimpan: "+err.message,true);btn.disabled=false;btn.textContent="Simpan Buku"}
+ };
+}
+async function openCopyForm(record){
+ const books=await getRows("books",true);
+ if(!books.length){toast("Tambahkan data buku terlebih dahulu sebelum membuat eksemplar.",true);return}
+ const isEdit=!!record;
+ const bookOptions=books.map(b=>`<option value="${esc(b.id)}" ${record?.bookId===b.id?"selected":""}>${esc(b.bookCode||"")} · ${esc(b.title||"Tanpa judul")}</option>`).join("");
+ const fields=isEdit?`<div class="field"><label>Kode Inventaris</label><input value="${esc(record.inventoryCode)}" disabled></div><div class="field"><label>Buku Terkait</label><input value="${esc(record.bookTitle||"")}" disabled></div>`:`<div class="field" style="grid-column:1/-1"><label>Pilih Buku *</label><select name="bookId" id="copyBookSelect" required><option value="">Pilih judul buku</option>${bookOptions}</select></div><div class="field"><label>Kode Inventaris</label><input value="Dibuat otomatis saat disimpan" disabled></div>`;
+ const conditionOptions=["Baik","Rusak Ringan","Rusak Berat","Hilang"].map(x=>`<option ${record?.condition===x?"selected":""}>${x}</option>`).join("");
+ const statusOptions=["tersedia","dipinjam","perbaikan","hilang"].map(x=>`<option ${record?.status===x?"selected":""}>${x}</option>`).join("");
+ showModal(`${isEdit?"Edit":"Tambah"} Eksemplar`,`${fields}<div class="field"><label>Kondisi *</label><select name="condition" required>${conditionOptions||'<option>Baik</option>'}</select></div><div class="field"><label>Status *</label><select name="status" required>${statusOptions||'<option>tersedia</option>'}</select></div><div class="field"><label>Lokasi Rak</label><input name="location" value="${esc(record?.location||"")}" placeholder="Contoh: Rak A-01"></div>`,"Simpan Eksemplar");
+ $("#recordForm").onsubmit=async e=>{
+  e.preventDefault();const fd=new FormData(e.target),btn=e.target.querySelector('[type="submit"]');btn.disabled=true;btn.textContent="Menyimpan...";
+  try{
+   const data={condition:fd.get("condition"),status:fd.get("status"),location:fd.get("location")||"",updatedAt:serverTimestamp()};
+   if(isEdit){
+    if(record.status==="dipinjam"&&data.status!=="dipinjam")throw new Error("Eksemplar sedang dipinjam. Proses pengembalian melalui menu Pengembalian.");
+    if(record.status!=="dipinjam"&&data.status==="dipinjam")throw new Error("Status dipinjam hanya dapat ditetapkan melalui transaksi Peminjaman.");
+    await updateDoc(doc(db,"copies",record.id),data);
+   }else{
+    const book=books.find(b=>b.id===fd.get("bookId"));if(!book)throw new Error("Pilih buku yang valid.");
+    const inventoryCode=await nextSequence("copies","inventoryCode","INV",6);
+    const existing=await getRows("copies",true);if(existing.some(c=>c.inventoryCode===inventoryCode))throw new Error("Kode inventaris sudah digunakan. Muat ulang halaman.");
+    await addDoc(collection(db,"copies"),{...data,inventoryCode,bookId:book.id,bookCode:book.bookCode||"",bookTitle:book.title||"",createdAt:serverTimestamp()});
+   }
+   invalidate("copies");closeModal();toast("Data eksemplar berhasil disimpan.");renderPage();
+  }catch(err){toast("Gagal menyimpan: "+err.message,true);btn.disabled=false;btn.textContent="Simpan Eksemplar"}
+ };
+}
+function showModal(title,fields,submitLabel){
+ $("#modalRoot").innerHTML=`<div class="modal-backdrop" id="modalBackdrop"><div class="modal"><div class="modal-head"><h3>${esc(title)}</h3><button class="icon-btn" id="closeModal">✕</button></div><form id="recordForm"><div class="modal-body"><div class="form-grid">${fields}</div><p class="muted" style="font-size:11px">Pastikan informasi yang dimasukkan sudah benar.</p></div><div class="modal-foot"><button type="button" class="btn btn-outline" id="cancelModal">Batal</button><button class="btn btn-primary" type="submit">${esc(submitLabel)}</button></div></form></div></div>`;
+ $("#closeModal").onclick=$("#cancelModal").onclick=closeModal;
+ $("#modalBackdrop").onclick=e=>{if(e.target.id==="modalBackdrop")closeModal()};
+}
+function openForm(type,record){
+ const cfg=collections[type];modalEditing={type,id:record?.id||null};
+ const inputs=cfg.fields.map(f=>{
+  const [key,label,kind,required,opts]=f;let value=record?.[key]??"";
+  if(kind==="select")return `<div class="field"><label>${label}${required?" *":""}</label><select name="${key}" ${required?"required":""}><option value="">Pilih ${label}</option>${opts.map(o=>`<option ${value===o?"selected":""} value="${esc(o)}">${esc(o)}</option>`).join("")}</select></div>`;
+  if(kind==="textarea")return `<div class="field" style="grid-column:1/-1"><label>${label}</label><textarea name="${key}" rows="3">${esc(value)}</textarea></div>`;
+  return `<div class="field"><label>${label}${required?" *":""}</label><input name="${key}" type="${kind}" value="${esc(kind==="date"?toDateInput(value):value)}" ${required?"required":""} ${kind==="number"?'min="0"':""}></div>`;
+ }).join("");
+ $("#modalRoot").innerHTML=`<div class="modal-backdrop" id="modalBackdrop"><div class="modal"><div class="modal-head"><h3>${record?"Edit":"Tambah"} ${cfg.title}</h3><button class="icon-btn" id="closeModal">✕</button></div><form id="recordForm"><div class="modal-body"><div class="form-grid">${inputs}</div><p class="muted" style="font-size:11px">Kolom bertanda * wajib diisi. Pastikan data yang dimasukkan benar.</p></div><div class="modal-foot"><button type="button" class="btn btn-outline" id="cancelModal">Batal</button><button class="btn btn-primary" type="submit">Simpan Data</button></div></form></div></div>`;
+ $("#closeModal").onclick=$("#cancelModal").onclick=closeModal;
+ $("#modalBackdrop").onclick=e=>{if(e.target.id==="modalBackdrop")closeModal()};
+ $("#recordForm").onsubmit=async e=>{
+  e.preventDefault();const fd=new FormData(e.target),data={};
+  cfg.fields.forEach(f=>{let v=fd.get(f[0]);if(f[2]==="number")v=v===""?0:Number(v);data[f[0]]=v});
+  data.updatedAt=serverTimestamp();
+  try{if(record)await updateDoc(doc(db,type,record.id),data);else{data.createdAt=serverTimestamp();await addDoc(collection(db,type),data)}
+   invalidate(type);closeModal();toast("Data berhasil disimpan.");renderPage();
+  }catch(err){toast("Gagal menyimpan: "+err.message,true)}
+ };
+}
+function closeModal(){$("#modalRoot").innerHTML="";}
+async function confirmDelete(type,id){
+ try{
+  if(type==="books"){
+   const copies=await getRows("copies",true);const related=copies.filter(c=>c.bookId===id);
+   if(related.length)throw new Error(`Buku masih memiliki ${related.length} eksemplar. Hapus atau pindahkan eksemplar terlebih dahulu.`);
+  }
+  if(type==="copies"){
+   const copies=await getRows("copies",true),copy=copies.find(c=>c.id===id);
+   if(copy?.status==="dipinjam")throw new Error("Eksemplar sedang dipinjam dan tidak dapat dihapus.");
+  }
+  if(!confirm("Hapus data ini? Tindakan ini tidak dapat dibatalkan."))return;
+  await deleteDoc(doc(db,type,id));invalidate(type);toast("Data berhasil dihapus.");renderPage();
+ }catch(e){toast("Tidak dapat menghapus: "+e.message,true)}
+}
+function exportCSV(title,rows,fields){const head=fields.map(f=>f[1]);const lines=[head,...rows.map(r=>fields.map(f=>String(r[f[0]]??"").replaceAll('"','""')))];const csv="\uFEFF"+lines.map(a=>a.map(x=>`"${x}"`).join(";")).join("\n");const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=title.toLowerCase().replaceAll(" ","_")+".csv";a.click();URL.revokeObjectURL(a.href)}
+
+function localYMD(d=new Date()){
+ const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),day=String(d.getDate()).padStart(2,"0");
+ return `${y}-${m}-${day}`;
+}
+function dayDiff(a,b){
+ if(!a||!b)return 0;
+ const [ay,am,ad]=String(a).slice(0,10).split("-").map(Number);
+ const [by,bm,bd]=String(b).slice(0,10).split("-").map(Number);
+ return Math.max(0,Math.floor((Date.UTC(by,bm-1,bd)-Date.UTC(ay,am-1,ad))/86400000));
+}
+function effectiveLoanStatus(loan){
+ if(loan.status==="dikembalikan")return "dikembalikan";
+ if(loan.status==="terlambat"|| (loan.dueDate&&dayDiff(loan.dueDate,localYMD())>0))return "terlambat";
+ return "dipinjam";
+}
+async function renderLoanPage(root){
+ const [loans,members,copies]=await Promise.all(["loans","members","copies"].map(n=>getRows(n,true)));
+ const active=loans.filter(x=>x.status!=="dikembalikan");
+ root.innerHTML=`<div class="page-heading"><div><h1>Peminjaman Buku</h1><p>Catat peminjaman dengan validasi anggota dan eksemplar tersedia.</p></div><button class="btn btn-primary" id="newLoan">＋ Transaksi Peminjaman</button></div>
+ <div class="stats"><div class="stat"><span class="muted">Peminjaman Aktif</span><strong>${active.length}</strong><small>Belum dikembalikan</small></div><div class="stat"><span class="muted">Terlambat</span><strong>${active.filter(x=>effectiveLoanStatus(x)==="terlambat").length}</strong><small>Melewati batas pengembalian</small></div><div class="stat"><span class="muted">Eksemplar Tersedia</span><strong>${copies.filter(x=>x.status==="tersedia").length}</strong><small>Siap dipinjam</small></div></div>
+ <div class="panel"><div class="toolbar"><input id="loanSearch" placeholder="Cari peminjam, judul, atau kode..."><select id="loanFilter"><option value="">Semua status</option><option value="dipinjam">Dipinjam</option><option value="terlambat">Terlambat</option><option value="dikembalikan">Dikembalikan</option></select><button class="btn btn-light" id="loanRefresh">↻ Muat Ulang</button><button class="btn btn-outline" id="loanExport">Ekspor CSV</button></div><div class="table-wrap"><table><thead><tr><th>Kode Pinjam</th><th>Peminjam</th><th>Judul Buku</th><th>Eksemplar</th><th>Tanggal Pinjam</th><th>Batas Kembali</th><th>Status</th></tr></thead><tbody id="loanRows"></tbody></table></div><div class="footer-note">${loans.length} transaksi peminjaman tercatat</div></div>`;
+ const draw=()=>{
+  const q=$("#loanSearch").value.toLowerCase(),f=$("#loanFilter").value;
+  const arr=loans.filter(x=>{const st=effectiveLoanStatus(x);return(!f||st===f)&&[x.loanCode,x.memberName,x.memberCode,x.bookTitle,x.inventoryCode].some(v=>String(v||"").toLowerCase().includes(q))});
+  $("#loanRows").innerHTML=arr.length?arr.sort((a,b)=>String(b.loanDate||"").localeCompare(String(a.loanDate||""))).map(x=>`<tr><td>${esc(x.loanCode||"-")}</td><td>${esc(x.memberName||"-")}<br><span class="muted">${esc(x.memberCode||"")}</span></td><td>${esc(x.bookTitle||"-")}</td><td>${esc(x.inventoryCode||"-")}</td><td>${dateText(x.loanDate)}</td><td>${dateText(x.dueDate)}</td><td>${fmtStatus(effectiveLoanStatus(x))}</td></tr>`).join(""):'<tr><td colspan="7" class="empty">Belum ada transaksi peminjaman.</td></tr>';
+ };
+ draw();$("#loanSearch").oninput=draw;$("#loanFilter").onchange=draw;
+ $("#loanRefresh").onclick=()=>{invalidate("loans","members","copies");renderLoanPage(root)};
+ $("#loanExport").onclick=()=>exportCSV("Peminjaman",loans,collections.loans.fields);
+ $("#newLoan").onclick=async()=>{
+  const eligibleMembers=members.filter(m=>!m.status||m.status==="aktif");
+  const availableCopies=copies.filter(c=>c.status==="tersedia");
+  if(!eligibleMembers.length){toast("Belum ada anggota aktif. Tambahkan anggota terlebih dahulu.",true);return}
+  if(!availableCopies.length){toast("Tidak ada eksemplar yang tersedia untuk dipinjam.",true);return}
+  const memberOpts=eligibleMembers.map(m=>`<option value="${esc(m.id)}">${esc(m.memberCode||"")} · ${esc(m.name||"Tanpa nama")}</option>`).join("");
+  const copyOpts=availableCopies.map(c=>`<option value="${esc(c.id)}">${esc(c.inventoryCode||"")} · ${esc(c.bookTitle||"Tanpa judul")}</option>`).join("");
+  const code=await nextSequence("loans","loanCode","RB-PJ-",6);
+  showModal("Transaksi Peminjaman",`<div class="field" style="grid-column:1/-1"><label>Kode Peminjaman</label><input value="${esc(code)}" disabled></div><div class="field" style="grid-column:1/-1"><label>Anggota *</label><select name="memberId" required><option value="">Pilih anggota</option>${memberOpts}</select></div><div class="field" style="grid-column:1/-1"><label>Eksemplar Buku *</label><select name="copyId" required><option value="">Pilih eksemplar tersedia</option>${copyOpts}</select></div><div class="field"><label>Tanggal Pinjam *</label><input type="date" name="loanDate" value="${localYMD()}" required></div><div class="field"><label>Batas Pengembalian *</label><input type="date" name="dueDate" min="${localYMD()}" required></div><div class="section-note" style="grid-column:1/-1;margin:0">Tanggal jatuh tempo ditentukan oleh administrator. Eksemplar akan otomatis berubah menjadi status <b>dipinjam</b> setelah transaksi disimpan.</div>`,"Simpan Peminjaman");
+  $("#recordForm").onsubmit=async e=>{
+   e.preventDefault();const fd=new FormData(e.target),member=eligibleMembers.find(x=>x.id===fd.get("memberId")),copy=availableCopies.find(x=>x.id===fd.get("copyId"));
+   const loanDate=fd.get("loanDate"),dueDate=fd.get("dueDate"),btn=e.target.querySelector('[type="submit"]');
+   if(!member||!copy)return toast("Pilih anggota dan eksemplar yang valid.",true);
+   if(dueDate<loanDate)return toast("Tanggal pengembalian tidak boleh sebelum tanggal pinjam.",true);
+   btn.disabled=true;btn.textContent="Menyimpan...";
+   try{
+    const batch=writeBatch(db),loanRef=doc(collection(db,"loans"));
+    batch.set(loanRef,{loanCode:code,memberId:member.id,memberName:member.name,memberCode:member.memberCode||"",copyId:copy.id,bookId:copy.bookId||"",bookTitle:copy.bookTitle||"",inventoryCode:copy.inventoryCode||"",loanDate,dueDate,status:"dipinjam",createdAt:serverTimestamp(),updatedAt:serverTimestamp()});
+    batch.update(doc(db,"copies",copy.id),{status:"dipinjam",updatedAt:serverTimestamp()});
+    await batch.commit();invalidate("loans","copies");closeModal();toast("Peminjaman berhasil dicatat.");renderLoanPage(root);
+   }catch(err){toast("Gagal menyimpan peminjaman: "+err.message,true);btn.disabled=false;btn.textContent="Simpan Peminjaman"}
+  };
+ };
+}
+async function renderReturnPage(root){
+ const [loans,returns]=await Promise.all(["loans","returns"].map(n=>getRows(n,true)));
+ const active=loans.filter(x=>x.status!=="dikembalikan");
+ root.innerHTML=`<div class="page-heading"><div><h1>Pengembalian Buku</h1><p>Proses pengembalian dan pembaruan status inventaris secara otomatis.</p></div><button class="btn btn-primary" id="newReturn">＋ Proses Pengembalian</button></div><div class="panel"><div class="panel-head"><div><h3>Riwayat Pengembalian</h3><p>${returns.length} transaksi tercatat</p></div></div><div class="table-wrap"><table><thead><tr><th>Kode Kembali</th><th>Kode Pinjam</th><th>Peminjam</th><th>Judul Buku</th><th>Tanggal Kembali</th><th>Denda</th><th>Kondisi</th></tr></thead><tbody>${returns.length?returns.sort((a,b)=>String(b.returnDate||"").localeCompare(String(a.returnDate||""))).map(x=>`<tr><td>${esc(x.returnCode||"-")}</td><td>${esc(x.loanCode||"-")}</td><td>${esc(x.memberName||"-")}</td><td>${esc(x.bookTitle||"-")}</td><td>${dateText(x.returnDate)}</td><td>${rupiah(x.fineAmount||0)}</td><td>${fmtStatus(x.condition)}</td></tr>`).join(""):'<tr><td colspan="7" class="empty">Belum ada pengembalian.</td></tr>'}</tbody></table></div></div>`;
+ $("#newReturn").onclick=async()=>{
+  if(!active.length){toast("Tidak ada peminjaman aktif yang perlu dikembalikan.");return}
+  const options=active.map(x=>`<option value="${esc(x.id)}">${esc(x.loanCode||"")} · ${esc(x.memberName||"")} · ${esc(x.bookTitle||"")} (${esc(x.inventoryCode||"")})</option>`).join("");
+  const code=await nextSequence("returns","returnCode","RB-PG-",6);
+  showModal("Proses Pengembalian",`<div class="field" style="grid-column:1/-1"><label>Transaksi Peminjaman *</label><select name="loanId" id="returnLoanSelect" required><option value="">Pilih transaksi aktif</option>${options}</select></div><div class="field"><label>Tanggal Kembali *</label><input type="date" name="returnDate" value="${localYMD()}" required></div><div class="field"><label>Kondisi Buku *</label><select name="condition" required><option value="Baik">Baik</option><option value="Rusak Ringan">Rusak Ringan</option><option value="Rusak Berat">Rusak Berat</option><option value="Hilang">Hilang</option></select></div><div class="section-note" id="finePreview" style="grid-column:1/-1;margin:0">Pilih transaksi untuk melihat perkiraan denda keterlambatan. Tarif: ${rupiah(FINE_PER_DAY)} per hari.</div>`,"Simpan Pengembalian");
+  const updatePreview=()=>{const loan=active.find(x=>x.id===$("#returnLoanSelect").value);if(!loan){$("#finePreview").textContent=`Tarif denda: ${rupiah(FINE_PER_DAY)} per hari.`;return}const dt=$("#recordForm [name=returnDate]").value;const late=dayDiff(loan.dueDate,dt);$("#finePreview").innerHTML=`Jatuh tempo: <b>${dateText(loan.dueDate)}</b>. Keterlambatan: <b>${late} hari</b>. Perkiraan denda: <b>${rupiah(late*FINE_PER_DAY)}</b>.`};
+  $("#returnLoanSelect").onchange=updatePreview;$("#recordForm [name=returnDate]").onchange=updatePreview;
+  $("#recordForm").onsubmit=async e=>{
+   e.preventDefault();const fd=new FormData(e.target),loan=active.find(x=>x.id===fd.get("loanId")),btn=e.target.querySelector('[type="submit"]');
+   if(!loan)return toast("Pilih transaksi peminjaman yang valid.",true);
+   const returnDate=fd.get("returnDate"),condition=fd.get("condition");
+   if(returnDate<loan.loanDate)return toast("Tanggal kembali tidak boleh sebelum tanggal pinjam.",true);
+   const lateDays=dayDiff(loan.dueDate,returnDate),fineAmount=lateDays*FINE_PER_DAY;
+   btn.disabled=true;btn.textContent="Memproses...";
+   try{
+    const batch=writeBatch(db),returnRef=doc(collection(db,"returns"));
+    batch.set(returnRef,{returnCode:code,loanId:loan.id,loanCode:loan.loanCode||"",memberId:loan.memberId||"",memberName:loan.memberName||"",bookId:loan.bookId||"",bookTitle:loan.bookTitle||"",copyId:loan.copyId||"",inventoryCode:loan.inventoryCode||"",returnDate,condition,lateDays,fineAmount,createdAt:serverTimestamp()});
+    batch.update(doc(db,"loans",loan.id),{status:"dikembalikan",returnDate,fineAmount,lateDays,updatedAt:serverTimestamp()});
+    if(loan.copyId){
+     const copyStatus=condition==="Hilang"?"hilang":condition==="Rusak Berat"?"perbaikan":"tersedia";
+     batch.update(doc(db,"copies",loan.copyId),{status:copyStatus,condition,updatedAt:serverTimestamp()});
+    }
+    if(fineAmount>0){
+     const fineCode=await nextSequence("fines","fineCode","RB-DN-",6);
+     const fineRef=doc(collection(db,"fines"));
+     batch.set(fineRef,{fineCode,loanId:loan.id,loanCode:loan.loanCode||"",memberId:loan.memberId||"",memberName:loan.memberName||"",amount:fineAmount,lateDays,status:"belum_lunas",createdAt:serverTimestamp()});
+    }
+    await batch.commit();invalidate("returns","loans","copies","fines");closeModal();toast(fineAmount>0?`Pengembalian berhasil. Denda ${rupiah(fineAmount)} tercatat.`:"Pengembalian berhasil dicatat.");renderReturnPage(root);
+   }catch(err){toast("Gagal memproses pengembalian: "+err.message,true);btn.disabled=false;btn.textContent="Simpan Pengembalian"}
+  };
+ };
+}
+async function renderFinePage(root){
+ const fines=await getRows("fines",true);
+ const unpaid=fines.filter(x=>x.status!=="lunas"),paid=fines.filter(x=>x.status==="lunas");
+ root.innerHTML=`<div class="page-heading"><div><h1>Denda Perpustakaan</h1><p>Perhitungan denda keterlambatan Rp2.000 per hari dan pencatatan pembayaran.</p></div></div><div class="stats"><div class="stat"><span class="muted">Belum Lunas</span><strong>${unpaid.length}</strong><small>Tagihan aktif</small></div><div class="stat"><span class="muted">Total Belum Lunas</span><strong>${rupiah(unpaid.reduce((s,x)=>s+Number(x.amount||0),0))}</strong><small>Jumlah tagihan</small></div><div class="stat"><span class="muted">Sudah Lunas</span><strong>${paid.length}</strong><small>Transaksi dibayar</small></div></div><div class="panel"><div class="toolbar"><input id="fineSearch" placeholder="Cari kode, peminjam..."><select id="fineFilter"><option value="">Semua pembayaran</option><option value="belum_lunas">Belum lunas</option><option value="lunas">Lunas</option></select><button class="btn btn-light" id="fineRefresh">↻ Muat Ulang</button><button class="btn btn-outline" id="fineExport">Ekspor CSV</button></div><div class="table-wrap"><table><thead><tr><th>Kode Denda</th><th>Peminjam</th><th>Kode Pinjam</th><th>Terlambat</th><th>Jumlah</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="fineRows"></tbody></table></div></div>`;
+ const draw=()=>{const q=$("#fineSearch").value.toLowerCase(),f=$("#fineFilter").value;const arr=fines.filter(x=>(!f||x.status===f)&&[x.fineCode,x.memberName,x.loanCode].some(v=>String(v||"").toLowerCase().includes(q)));$("#fineRows").innerHTML=arr.length?arr.map(x=>`<tr><td>${esc(x.fineCode||"-")}</td><td>${esc(x.memberName||"-")}</td><td>${esc(x.loanCode||"-")}</td><td>${Number(x.lateDays||0)} hari</td><td>${rupiah(x.amount)}</td><td>${fmtStatus(x.status)}</td><td>${x.status==="lunas"?`<span class="muted">${dateText(x.paidDate)}</span>`:`<button class="btn btn-light" data-paid="${esc(x.id)}">Tandai Lunas</button>`}</td></tr>`).join(""):'<tr><td colspan="7" class="empty">Belum ada data denda.</td></tr>'};
+ draw();$("#fineSearch").oninput=draw;$("#fineFilter").onchange=draw;
+ $("#fineRefresh").onclick=()=>{invalidate("fines");renderFinePage(root)};
+ $("#fineExport").onclick=()=>exportCSV("Denda",fines,collections.fines.fields);
+ $("#fineRows").onclick=async e=>{const b=e.target.closest("[data-paid]");if(!b)return;if(!confirm("Konfirmasi pembayaran denda ini sudah diterima?"))return;b.disabled=true;try{await updateDoc(doc(db,"fines",b.dataset.paid),{status:"lunas",paidDate:localYMD(),updatedAt:serverTimestamp()});invalidate("fines");toast("Pembayaran denda berhasil dicatat.");renderFinePage(root)}catch(err){toast("Gagal memperbarui pembayaran: "+err.message,true);b.disabled=false}};
+}
+
+async function renderConditions(root){const rows=await getRows("copies",true);root.innerHTML=`<div class="page-heading"><div><h1>Kondisi Buku</h1><p>Pemantauan kondisi setiap eksemplar</p></div><button class="btn btn-primary" id="goCopies">Kelola Eksemplar</button></div><div class="stats"><div class="stat"><span class="muted">Kondisi Baik</span><strong>${rows.filter(x=>x.condition==="Baik").length}</strong></div><div class="stat"><span class="muted">Rusak Ringan</span><strong>${rows.filter(x=>x.condition==="Rusak Ringan").length}</strong></div><div class="stat"><span class="muted">Rusak Berat / Hilang</span><strong>${rows.filter(x=>["Rusak Berat"].includes(x.condition)||x.status==="hilang").length}</strong></div></div><div class="panel"><div class="panel-head"><h3>Daftar Kondisi Eksemplar</h3></div><div class="table-wrap"><table><thead><tr><th>Kode Inventaris</th><th>Judul Buku</th><th>Kondisi</th><th>Status</th><th>Lokasi</th></tr></thead><tbody>${rows.length?rows.map(x=>`<tr><td>${esc(x.inventoryCode)}</td><td>${esc(x.bookTitle)}</td><td>${fmtStatus(x.condition)}</td><td>${fmtStatus(x.status)}</td><td>${esc(x.location||"-")}</td></tr>`).join(""):'<tr><td colspan="5" class="empty">Belum ada data eksemplar.</td></tr>'}</tbody></table></div></div>`;$("#goCopies").onclick=()=>navTo("copies")}
+async function renderBarcode(root){const rows=await getRows("copies",true);root.innerHTML=`<div class="page-heading"><div><h1>Barcode / QR Code</h1><p>Buat identitas visual untuk setiap eksemplar buku</p></div></div><div class="panel"><div class="toolbar"><select id="barcodeSelect"><option value="">Pilih kode inventaris</option>${rows.map(x=>`<option value="${esc(x.inventoryCode||x.id)}">${esc(x.inventoryCode||x.id)} · ${esc(x.bookTitle||"")}</option>`).join("")}</select><button class="btn btn-primary" id="makeQR">Buat QR Code</button><button class="btn btn-outline" id="printQR">Cetak</button></div><div class="qr-area" id="qrArea"><span class="muted">Pilih eksemplar, lalu klik Buat QR Code.</span></div></div><p class="muted" style="font-size:11px">QR Code berisi kode inventaris. Untuk menghasilkan barcode 1D, gunakan kode inventaris sebagai teks pada label barcode.</p>`;
+ $("#makeQR").onclick=()=>{const v=$("#barcodeSelect").value;if(!v)return toast("Pilih eksemplar terlebih dahulu.",true);$("#qrArea").innerHTML=`<h3>${esc(v)}</h3><div id="qrCanvas"></div><p class="muted">Ruang Baca Fisika · FMIPA Unila</p>`;const s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";s.onload=()=>new QRCode($("#qrCanvas"),{text:v,width:190,height:190,colorDark:"#102f53",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});document.body.appendChild(s)};
+ $("#printQR").onclick=()=>window.print();
+}
+async function renderReports(root){const [books,copies,members,loans,returns,fines]=await Promise.all(["books","copies","members","loans","returns","fines"].map(n=>getRows(n,true)));const unpaid=fines.filter(x=>x.status!=="lunas").reduce((s,x)=>s+Number(x.amount||0),0);root.innerHTML=`<div class="page-heading"><div><h1>Laporan Perpustakaan</h1><p>Ringkasan data dan ekspor laporan</p></div></div><div class="report-grid"><div class="report-card"><h3>Laporan Koleksi Buku</h3><p>Daftar seluruh judul buku yang tersimpan di sistem.</p><b>${books.length} judul buku</b><p><button class="btn btn-light" id="rBooks">Unduh CSV</button></p></div><div class="report-card"><h3>Laporan Inventaris</h3><p>Daftar eksemplar dan status ketersediaannya.</p><b>${copies.length} eksemplar</b><p><button class="btn btn-light" id="rCopies">Unduh CSV</button></p></div><div class="report-card"><h3>Laporan Anggota</h3><p>Data anggota perpustakaan yang terdaftar.</p><b>${members.length} anggota</b><p><button class="btn btn-light" id="rMembers">Unduh CSV</button></p></div><div class="report-card"><h3>Laporan Peminjaman</h3><p>Riwayat transaksi peminjaman buku.</p><b>${loans.length} transaksi</b><p><button class="btn btn-light" id="rLoans">Unduh CSV</button></p></div><div class="report-card"><h3>Laporan Pengembalian</h3><p>Riwayat pengembalian buku.</p><b>${returns.length} transaksi</b><p><button class="btn btn-light" id="rReturns">Unduh CSV</button></p></div><div class="report-card"><h3>Laporan Denda</h3><p>Total denda yang belum dilunasi.</p><b>${rupiah(unpaid)}</b><p><button class="btn btn-light" id="rFines">Unduh CSV</button></p></div></div>`;
+ [["rBooks","books"],["rCopies","copies"],["rMembers","members"],["rLoans","loans"],["rReturns","returns"],["rFines","fines"]].forEach(([id,type])=>$("#"+id).onclick=()=>exportCSV(collections[type].title,({books,copies,members,loans,returns,fines})[type],collections[type].fields));
+}
+function renderSettings(root){root.innerHTML=`<div class="page-heading"><div><h1>Pengaturan Sistem</h1><p>Informasi dan kebijakan dasar perpustakaan</p></div></div><div class="panel"><div class="panel-head"><div><h3>Identitas Perpustakaan</h3><p>Informasi yang ditampilkan pada aplikasi</p></div></div><div class="modal-body"><div class="form-grid"><div class="field"><label>Nama Perpustakaan</label><input value="Ruang Baca Fisika" disabled></div><div class="field"><label>Institusi</label><input value="FMIPA Universitas Lampung" disabled></div><div class="field"><label>Denda per Hari (Rp)</label><input value="${FINE_PER_DAY.toLocaleString("id-ID")}" disabled></div><div class="field"><label>Email Administrator</label><input value="${esc(activeUser?.email||"")}" disabled></div></div><div class="section-note">Konfigurasi Firebase dan daftar administrator berada pada bagian KONFIGURASI FIREBASE di dalam file index.html. Untuk mengubah kebijakan denda, ubah nilai FINE_PER_DAY pada script.</div></div></div><div class="panel"><div class="panel-head"><h3>Keamanan</h3></div><div class="modal-body"><p class="muted">Aplikasi menggunakan Firebase Authentication untuk login administrator. Batasi akses koleksi Firestore melalui Security Rules. Jangan mengandalkan pembatasan menu di browser sebagai satu-satunya lapisan keamanan.</p><button class="btn btn-outline" id="logoutSettings">Keluar dari akun</button></div></div>`;$("#logoutSettings").onclick=()=>$("#logoutBtn").click()}
+
+$("#loginForm").onsubmit=async e=>{
+ e.preventDefault();
+ const btn=$("#loginBtn"),msg=$("#loginMessage");
+ msg.style.display="none";msg.textContent="";
+ const placeholders=["GANTI_API_KEY","GANTI_PROJECT_ID","GANTI_MESSAGING_SENDER_ID","GANTI_APP_ID"];
+ if(placeholders.some(x=>Object.values(firebaseConfig).includes(x))){
+  msg.textContent="Konfigurasi Firebase belum diisi. Buka bagian KONFIGURASI FIREBASE pada index.html, lalu masukkan konfigurasi Web App dari Firebase Console.";
+  msg.style.display="block";return;
+ }
+ btn.disabled=true;btn.textContent="Memeriksa akun...";
+ try{await signInWithEmailAndPassword(auth,$("#loginEmail").value.trim(),$("#loginPassword").value)}
+ catch(err){
+  console.error("Firebase login error:",err.code,err.message);
+  const messages={
+   "auth/invalid-credential":"Email atau password tidak cocok. Pastikan akun sudah dibuat di Firebase Authentication dan password benar.",
+   "auth/user-not-found":"Akun administrator belum terdaftar. Buka Firebase Console > Authentication > Users, lalu tambahkan akun administrator.",
+   "auth/wrong-password":"Password akun Firebase tidak sesuai. Masukkan password yang benar atau reset password melalui Firebase Console.",
+   "auth/invalid-email":"Format email tidak valid. Periksa kembali alamat email.",
+   "auth/too-many-requests":"Firebase membatasi percobaan login sementara. Tunggu beberapa saat sebelum mencoba lagi.",
+   "auth/network-request-failed":"Koneksi ke Firebase gagal. Periksa internet, lalu muat ulang halaman.",
+   "auth/operation-not-allowed":"Login Email/Password belum aktif. Aktifkan di Firebase Console > Authentication > Sign-in method.",
+   "auth/unauthorized-domain":"Domain website belum diizinkan. Tambahkan domain pada Firebase Console > Authentication > Settings > Authorized domains. Untuk pengujian lokal, tambahkan localhost.",
+   "auth/invalid-api-key":"API Key Firebase tidak valid. Periksa kembali konfigurasi Web App pada file HTML.",
+   "auth/configuration-not-found":"Konfigurasi Authentication tidak ditemukan pada proyek Firebase ini. Periksa projectId dan pengaturan Authentication.",
+   "auth/internal-error":"Firebase mengalami kesalahan internal. Periksa konfigurasi proyek dan coba kembali."
+  };
+  msg.textContent=(messages[err.code]||("Login gagal ("+(err.code||"tanpa kode")+"): "+(err.message||"Kesalahan tidak diketahui")))+" [Kode: "+(err.code||"unknown")+"]";
+  msg.style.display="block";
+ }finally{btn.disabled=false;btn.textContent="Masuk ke Dashboard"}
+};
+$("#logoutBtn").onclick=async()=>{try{await signOut(auth)}catch(e){toast(e.message,true)}};
+onAuthStateChanged(auth,user=>{
+ if(user){
+  const email=(user.email||"").toLowerCase();
+  if(!ADMIN_EMAILS.map(x=>x.toLowerCase()).includes(email)){signOut(auth);toast("Akun ini tidak terdaftar sebagai administrator.",true);return}
+  activeUser=user;$("#loginView").classList.add("hidden");$("#appView").classList.remove("hidden");$("#adminEmail").textContent=user.email||"";$("#accountMenuEmail").textContent=user.email||"";navTo("dashboard");
+ }else{activeUser=null;$("#appView").classList.add("hidden");$("#loginView").classList.remove("hidden");}
+});
+window.__firebaseLoginReady = true;
+</script>
+</body>
+</html>
